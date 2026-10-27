@@ -37,3 +37,7 @@ These groupings, activity formats, example selection, support fading, and order 
 - Repeated rounds reuse a limited bank. Use novel examples and observations over time before making judgments about retention, transfer, or readiness. Neither completion nor one short round means mastery.
 - Browser totals belong to the browser profile, not an identified student. This release does not provide teacher dashboards, cross-device records, placement decisions, or student accounts.
 - Before classroom use, review the question bank and answer key; try actual student devices, keyboard-only use, screen readers, and local printers; check current teacher pacing; and observe whether the feedback addresses students’ explanations.
+
+## Multiplication studio expansion
+
+All 169 ordered factor pairs from 0–12 are now available in selectable-table flashcards and untimed quizzes. The one-digit subset supports 3.OA.5 and 3.OA.7 practice; factors 10–12 are our optional instructional extension. This expansion does not add a verified Wilton requirement or alter the longer curriculum map. The content includes zero/one, doubles, decompositions using 5 and 10, and connections to division only when both factors are nonzero. Each strategy equation is verified across the complete bank. Flashcards are self-reflection; quizzes separate in-question support from checks without it, and all retries remain separate. Broader grade 3 applications and a classroom fluency assessment still require other work.

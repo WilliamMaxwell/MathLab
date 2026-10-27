@@ -6,7 +6,22 @@ A calm, untimed first release connecting math facts to early algebraic thinking.
 
 Open `index.html` in a modern browser. No installation or build is needed. For reliable browser-local saving and a consistent origin, install Node.js and run `npm start`, then visit http://127.0.0.1:4173. There are no npm dependencies. Run `npm test` for mathematical and progress checks.
 
-## First release: Facts into equations
+## Multiplication studio: quizzes and flashcards
+
+Open **Times tables** or the **Multiplication studio** button. All 169 ordered facts from 0 × 0 through 12 × 12 are available. Select one or several tables; each includes partners 0–12. Choose up to 10, up to 20, or every selected fact. Facts are shuffled without repeats within a round. “Tables 0–9” is a selection shortcut; partners still include 10–12, as stated in the setup.
+
+- **Quiz game:** type a product or equivalent numeric expression, check it, and read a strategy and a multiplication/division connection. Feedback distinguishes adding factors and an extra/missing group. Hints and arrays mark a first check as supported. Invalid input is not scored. Revisit missed facts without replacing first-check totals. There is no timer or speed reward.
+- **Flashcards:** think of the product, reveal it, inspect a strategy or array, and self-rate “Feels familiar” or “Practice again.” A reveal alone does not record a review. Self-ratings never count as quiz correctness; missed quiz facts remain available even after a familiar flashcard rating.
+- **Records:** see distinct facts practiced by table, first checks with and without help, separate retries, and separate flashcard reflections. “Facts to revisit” uses the latest missed quiz check or practice-again rating. Correct checks clear that quiz revisit flag; clearing a flag is not a mastery claim.
+- **Print:** selected-table worksheets, a separate answer key, and a multiplication chart open from “Want a picture or a paper copy?” in setup.
+
+Multiplication content and strategies are in `facts-content.js`; the tested state transitions are in `facts-engine.js`; `facts.js` and `facts.css` provide the UI. Printable documents use `facts-print.html` and `facts-print.js`. All remain buildless and dependency-free.
+
+The separate local-storage key `mathlab-multiplication-v1` preserves table selections, the active quiz/deck (including answers, hints, and reveal state), evidence by fact, and completed-round counts. Switching app tabs, pausing, and reloading preserve the active round. Starting a new multiplication round replaces that round but keeps completed evidence. Original lesson records remain in `mathlab-v1` and are not migrated or overwritten. Each area has its own explicitly labeled reset.
+
+The test suite checks all 169 products and every worked equation, zero rules, selections and empty pools, complete rounds, invalid and equivalent answers, hint classification, retries, duplicate checks, flashcard separation, review flags, and saved-state validation. Browser QA verified complete quiz and flashcard rounds, hints, reload restoration, retry scoring, and distinct progress records. Azure’s existing deployment workflow now runs the tests before upload.
+
+## Original lessons: Facts into equations
 
 Five lessons include worked examples, adjustable visual models, 30 authored practice questions, meaningful answer explanations, hints, reflections, and missed-question retries:
 
@@ -24,7 +39,7 @@ Print & keep opens a learning guide, five worksheets, and a separate answer key 
 
 ## What saves
 
-Local storage key: `mathlab-v1`. Completed checks, support status totals, round totals, the selected lesson/tab, active Practice and Connect rounds, and Practice reflections survive reloads on the same browser profile and site address when storage is available. Explore scratch notes are deliberately not saved. Ending/restarting a round keeps completed checks in totals. Only continuing past the final question completes a round. Reset affects only Math Lab data.
+Local storage key: `mathlab-v1`. Completed checks, support status totals, round totals, the selected lesson/tab, active Practice and Connect rounds, and Practice reflections survive reloads on the same browser profile and site address when storage is available. Explore scratch notes are deliberately not saved. Ending/restarting a round keeps completed checks in totals. Only continuing past the final question completes a round. The original lesson reset affects only the original lesson data; multiplication has its own reset.
 
 First checks without in-question help, first checks with help, and retries are separate. Any displayed Practice model or hint marks that question supported. Connect is always supported. A retry never changes first-check totals. “Without help” is practice after instruction, not a controlled independent assessment. No score establishes mastery.
 
@@ -42,7 +57,7 @@ Node tests check authored numeric answers, independent substitution of missing q
 
 ## Deploy on Azure Static Web Apps
 
-Deployment has not been performed by this package. Connect this separate GitHub repository to a new Azure Static Web App, using your chosen subscription/resource group and the Free plan. Use Custom build settings: app location `/`, API location empty, output location empty. Because no build is required, set `skip_app_build: true` in Azure’s generated `Azure/static-web-apps-deploy` upload step. Keep Azure’s generated deployment-secret reference unchanged. No credentials belong in this repository.
+This repository now includes your Azure-generated deployment workflow. Pushes to main run the tests and upload the static files to the connected Azure Static Web App. The generated deployment-secret reference is preserved. If recreating the hosting setup, connect the repository to a Static Web App using your chosen subscription/resource group and the Free plan. Use Custom build settings: app location `/`, API location empty, output location empty. Because no build is required, set `skip_app_build: true` in Azure’s generated `Azure/static-web-apps-deploy` upload step. Keep Azure’s generated deployment-secret reference unchanged. No credentials belong in this repository.
 
 ```yaml
 app_location: "/"
