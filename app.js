@@ -38,13 +38,13 @@ function openGradeActivity(id,tab){
  store.tab=tab;save();render();if(tab==='practice'&&!store.practice)startPractice();focus();
 }
 function render(){
- const g=MathGrades.get(selectedGrade),isHome=store.tab==='home'||!g;
+ const g=MathGrades.get(selectedGrade),isHome=store.tab==='home'||!g;if(g&&![...g.featured,...g.review].includes(store.lesson))switchLesson(g.featured[0]);
  $('.skip').href=isHome?'#grade-home':'#content';$('#grade-home').hidden=!isHome;$('.workspace').hidden=isHome;$('#grade-workspace-bar').hidden=isHome;
  $('#choose-grade').textContent=g?'Change grade · '+selectedGrade:'Choose grade';$('#choose-grade').onclick=chooseGrade;
  $('.brand').onclick=e=>{e.preventDefault();gradeHome();};$('#back-to-grade').onclick=gradeHome;
  if(isHome){
   const saved=store.practice,active=saved&&saved.index<saved.cards.length?lessons.find(l=>l.id===saved.lesson):null;
-  GradeHome.render($('#grade-home'),{grade:selectedGrade,onSelect:grade=>{selectedGrade=grade;rememberGrade();gradeHome();},onChoose:chooseGrade,onOpen:openGradeActivity,resume:active?{title:'Grade '+(active.gradeLevel||3)+' · '+active.title,open:()=>{selectedGrade=active.gradeLevel||3;rememberGrade();switchLesson(active.id);store.tab='practice';save();render();focus();}}:null});
+  GradeHome.render($('#grade-home'),{grade:selectedGrade,onSelect:grade=>{selectedGrade=grade;rememberGrade();switchLesson(MathGrades.get(grade).featured[0]);gradeHome();},onChoose:chooseGrade,onOpen:openGradeActivity,resume:active?{title:'Grade '+(active.gradeLevel||3)+' · '+active.title,open:()=>{selectedGrade=active.gradeLevel||3;rememberGrade();switchLesson(active.id);store.tab='practice';save();render();focus();}}:null});
   return;
  }
  $('#back-to-grade').textContent='← Back to Grade '+selectedGrade;
