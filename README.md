@@ -2,6 +2,27 @@
 
 A calm, untimed first release connecting math facts to early algebraic thinking. Independent learning resource; not affiliated with Wilton Public Schools.
 
+## Grade-first navigation
+
+Students now begin by choosing Grade 3–8. Their last grade is remembered in this browser, and returning to the app opens that grade’s activity home. No activity or easy foundation model appears before a grade is chosen. The Change grade button is always available.
+
+Grade homes show current, grade-appropriate starter lessons first; supporting review is in a collapsed section. A Try button opens the questions directly. The app currently includes these focused collections, not complete grade curricula:
+
+| Grade | Main activities |
+| --- | --- |
+| 3 | Equal groups, missing factors, equality, distributive reasoning, and multiplication studio |
+| 4 | Factors, multiples, prime/composite reasoning, and multiplicative comparisons |
+| 5 | Grouped numerical expressions, interpreting expressions, and comparing number rules |
+| 6 | Variable expressions and one-step equations with positive rational quantities |
+| 7 | Two-step equations with signed numbers, decimals, and contextual problems |
+| 8 | Linear rules, tables, rates, initial values, and comparing two cost rules |
+
+Grade 4–8 each have one new six-question lesson with worked examples, hints, explanations, and separate worksheets/keys. The original 30 questions remain available; there are now 60 authored questions plus the 169-fact multiplication bank. Grade groupings and examples are instructional choices informed by the linked Common Core standards, not verified Wilton unit sequencing. Missing grade topics are named on each grade home.
+
+The remembered grade uses `mathlab-grade-v1`. Existing lesson and multiplication keys are preserved. Lesson rounds are retained by lesson in `practiceByLesson` within the existing lesson record, so switching grades does not discard a paused round. Completed checks still use the existing lesson totals; those totals aggregate lessons and are not grade mastery reports. The active multiplication round and its scores remain separate. No student accounts or placement decisions are added.
+
+Grade catalog and navigation are in `grades.js` and `grade-home.js`; added lesson content is in `grade-content.js`. Print documents accept a grade parameter and include only that grade’s featured lessons. The generic print page without a grade includes all authored lessons.
+
 ## Try it
 
 Open `index.html` in a modern browser. No installation or build is needed. For reliable browser-local saving and a consistent origin, install Node.js and run `npm start`, then visit http://127.0.0.1:4173. There are no npm dependencies. Run `npm test` for mathematical and progress checks.
